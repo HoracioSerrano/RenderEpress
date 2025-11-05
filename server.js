@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 10000; // Render define el puerto por variable de entorno
 
-try {
+//Config Archivos Estaticos
 const path = require('node:path');
 const ruta = path.resolve(__dirname, "public");
 app.use('/public', express.static(ruta)); // Para servir archivos estáticos
-}catch{}
+
 
 app.get('/', (req, res) => {
   res.send('Servidor Express funcionando en Render!');
