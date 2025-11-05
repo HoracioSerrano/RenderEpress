@@ -7,6 +7,11 @@ const { Pool } = pkg;
 const app = express();
 const PORT = process.env.PORT || 10000; // Render define el puerto por variable de entorno
 
+// Ruta raíz
+app.get('/', (req, res) => {
+  res.send('Servidor Express funcionando en Render!');
+});
+
 // Config Archivos Estáticos
 const ruta = path.resolve('public');
 app.use('/public', express.static(ruta)); // Para servir archivos estáticos
@@ -18,11 +23,6 @@ const pool = new Pool({
   user: 'default',
   password: 't2Ju3hkoAQYE',
   ssl: { rejectUnauthorized: false }, // Neon requiere SSL
-});
-
-// Ruta raíz
-app.get('/', (req, res) => {
-  res.send('Servidor Express funcionando en Render!');
 });
 
 // Ruta SQL: listar tablas
